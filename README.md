@@ -145,42 +145,38 @@ The system follows a **three-tier architecture**:
                 └─────────────┘
 ```
 
-### **Component Structure**
+### **Key Components Details**
 
-#### **Client Components**
-- `ClientGUI.java` - Main client interface
-- `Client.java` - Client connection logic
-- `ScreenViewer.java` - Display remote screen
-- `InputHandler.java` - Handle user input
-- `ChatPanel.java` - Client-side chat interface
+#### **Client Side**
 
-#### **Server Components**
-- `ServerGUI.java` - Main server interface
-- `Server.java` - Server connection management
-- `ClientHandler.java` - Handle individual client connections
-- `ScreenCapturer.java` - Capture and stream screen
-- `ServerChatPanel.java` - Server-side chat interface
-- `ChatManager.java` - Manage chat sessions
+| Component | Description | Responsibilities |
+|-----------|-------------|------------------|
+| **Client** | Core client functionality | Manages server connection, authentication, message sending/receiving |
+| **ClientGUI** | Client user interface | Provides UI for connection settings, chat, screen viewing |
+| **ScreenViewer** | Remote screen display | Renders server's screen, handles image scaling and display options |
+| **InputHandler** | Input event processor | Captures local mouse/keyboard events, sends to server |
+| **ChatPanel** | Chat interface | Displays chat messages, allows sending messages and files |
 
-#### **Common Components**
-- `Constants.java` - Application-wide constants
-- `Message.java` - Message data structure
-- `FileTransfer.java` - File transfer utilities
-- `MongoDBConnection.java` - Database connection manager
+#### **Server Side**
 
-#### **Database Models**
-- `User.java` - User entity
-- `Session.java` - Session tracking
-- `ChatMessage.java` - Chat message entity
-- `ActivityLog.java` - Activity logging
-- `UserPreferences.java` - User settings
+| Component | Description | Responsibilities |
+|-----------|-------------|------------------|
+| **Server** | Core server functionality | Listens for connections, manages clients, coordinates interactions |
+| **ClientHandler** | Client connection manager | Handles individual client communication, authentication, message routing |
+| **ScreenCapturer** | Screen capture utility | Captures server screen, compresses images, manages capture frame rate |
+| **InputHandler** | Input processor | Processes remote input events, applies them to local system |
+| **ChatManager** | Chat coordinator | Manages chat messages, stores history, broadcasts messages |
+| **ServerGUI** | Server interface | Provides UI for server settings, client management, chat |
 
-#### **Database Access Objects (DAOs)**
-- `UserDAO.java` - User data operations
-- `SessionDAO.java` - Session management
-- `ChatMessageDAO.java` - Chat persistence
-- `ActivityLogDAO.java` - Activity logging
-- `UserPreferencesDAO.java` - Preferences management
+#### **Database Components**
+
+| Component | Description | Responsibilities |
+|-----------|-------------|------------------|
+| **UserDAO** | User data access | User CRUD operations, authentication, password hashing |
+| **SessionDAO** | Session data access | Tracks connection sessions, start/end times, client information |
+| **ChatMessageDAO** | Chat message data access | Stores and retrieves chat messages, manages chat history |
+| **ActivityLogDAO** | Activity log data access | Records system events, user actions, and control operations |
+| **UserPreferencesDAO** | User preferences data access | Stores and retrieves user-specific settings and preferences |
 
 ---
 
