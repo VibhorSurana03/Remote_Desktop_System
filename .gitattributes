@@ -1,0 +1,13 @@
+# Remote Desktop System - Java Project
+*.java linguist-detectable=true
+*.xml linguist-detectable=false
+*.md linguist-documentation=true
+*.bat linguist-detectable=false
+*.png linguist-documentation=true
+*.pdf linguist-documentation=true
+
+# Exclude build artifacts
+target/* linguist-generated=true
+*.class linguist-generated=true
+*.jar linguist-generated=true
+dependency-reduced-pom.xml linguist-generated=true
