@@ -79,10 +79,6 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 *Complete system architecture showing client-server communication, database integration, and component interactions*
 
-### **High-Level Architecture Diagram**
-
-![High-Level Architecture](Architecture_Diagram.png)
-
 ### **Communication Flow**
 
 **Client → Server:**
