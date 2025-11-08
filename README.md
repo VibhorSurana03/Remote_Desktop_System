@@ -75,31 +75,31 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 ### **System Flow Diagram**
 
-![Remote Desktop System Flow](Remote_Flow.png)
+![Remote Desktop System Flow](diagrams/Remote_Flow.png)
 
 *Complete system architecture showing client-server communication, database integration, and component interactions*
 
 ### **System Architecture**
 
-![System Architecture](Architecture_Diagram.png)
+![System Architecture](diagrams/Architecture_Diagram.png)
 
 *Detailed component architecture showing Server System, Client System, Common Components, and MongoDB Database with all data models and DAOs*
 
 ### **Connection & Authentication Flow**
 
-![Connection & Authentication Flow](ConnectionAndAuthenticationFlow.png)
+![Connection & Authentication Flow](diagrams/ConnectionAndAuthenticationFlow.png)
 
 *Step-by-step flow of client connection establishment, user authentication, and session initialization process*
 
 ### **Screen Sharing & Remote Control Flow**
 
-![Screen Sharing & Remote Control Flow](Screen%20Sharing%20%26%20Remote%20Control%20Flow.png)
+![Screen Sharing & Remote Control Flow](diagrams/Screen%20Sharing%20%26%20Remote%20Control%20Flow.png)
 
 *Real-time screen capture, compression, transmission, and remote input control mechanism between client and server*
 
 ### **Chat & File Transfer Flow**
 
-![Chat & File Transfer Flow](Chat%20%26%20File%20Transfer%20Flow.png)
+![Chat & File Transfer Flow](diagrams/Chat%20%26%20File%20Transfer%20Flow.png)
 
 *Bidirectional communication flow for chat messages and file transfers with MongoDB persistence*
 
