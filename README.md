@@ -79,6 +79,12 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 *Complete system architecture showing client-server communication, database integration, and component interactions*
 
+### **High-Level Architecture Diagram**
+
+![High-Level Architecture](Architecture_Diagram.png)
+
+*Detailed component architecture showing Server System, Client System, Common Components, and MongoDB Database with all data models and DAOs*
+
 ### **Architecture Overview**
 
 The system follows a **three-tier architecture**:
