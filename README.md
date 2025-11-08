@@ -81,13 +81,13 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 ### **System Architecture**
 
-![System Architecture](System%20Architecture.png)
+![System Architecture](Architecture_Diagram.png)
 
 *Detailed component architecture showing Server System, Client System, Common Components, and MongoDB Database with all data models and DAOs*
 
 ### **Connection & Authentication Flow**
 
-![Connection & Authentication Flow](Connection%20%26%20Authentication%20Flow.png)
+![Connection & Authentication Flow](ConnectionAndAuthenticationFlow.png)
 
 *Step-by-step flow of client connection establishment, user authentication, and session initialization process*
 
