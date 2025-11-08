@@ -73,6 +73,12 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 ## 🏗️ Architecture
 
+### **System Flow Diagram**
+
+![Remote Desktop System Flow](Remote_Flow.png)
+
+*Complete system architecture showing client-server communication, database integration, and component interactions*
+
 ### **Client-Server Model**
 ```
 ┌─────────────┐         Network         ┌─────────────┐
