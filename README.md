@@ -399,6 +399,4 @@ This project is open source and available under the MIT License.
 
 *Connecting computers, empowering remote work* 🌐💻
 
-Made with ❤️ by Vibhor Surana
-
 </div>
