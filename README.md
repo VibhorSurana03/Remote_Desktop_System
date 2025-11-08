@@ -24,23 +24,26 @@ This Remote Desktop System is a comprehensive Java application that enables user
 ## ✨ Features
 
 ### 🖥️ **Remote Desktop Control**
-- **Real-Time Screen Sharing** - Live screen capture and streaming
-- **Remote Input Control** - Control mouse and keyboard remotely
+- **Real-Time Screen Sharing** - Live screen capture and streaming with JPEG compression
+- **Remote Input Control** - Control mouse and keyboard remotely (requires control grant)
 - **High-Performance Capture** - Optimized screen capture using Java Robot API
-- **Adjustable Quality** - Configurable image quality and frame rate
-- **Multi-Monitor Support** - Handle multiple display configurations
+- **Adjustable Quality** - Configurable JPEG quality (default 0.7) and frame rate (15-120 FPS)
+- **Auto FPS Adjustment** - Dynamically adjusts frame rate based on network performance
+- **Multi-Monitor Support** - Captures all screens in multi-monitor setups
+- **Control Management** - Server can grant/revoke control to specific clients
 
 ### 💬 **Integrated Communication**
 - **Real-Time Chat** - Built-in chat system for client-server communication
-- **Chat History** - Persistent message storage in MongoDB
-- **Message Notifications** - Visual and audio alerts for new messages
-- **Typing Indicators** - See when the other party is typing
+- **Chat History** - Persistent message storage in MongoDB via ChatMessageDAO
+- **Broadcast Messaging** - Messages sent to all connected clients
+- **Server-Client Chat** - Bidirectional communication between host and viewers
 
 ### 📁 **File Transfer**
 - **Bidirectional Transfer** - Send and receive files between client and server
-- **Progress Tracking** - Real-time upload/download progress
 - **Multiple File Types** - Support for all file formats
-- **Secure Transfer** - Encrypted file transmission
+- **Automatic Directory Creation** - Creates download directories automatically
+- **File Broadcasting** - Files sent to all connected clients
+- **Server Downloads** - Files saved to `server_downloads/` directory
 
 ### 🗄️ **Database Integration**
 - **MongoDB Backend** - NoSQL database for data persistence
@@ -50,10 +53,14 @@ This Remote Desktop System is a comprehensive Java application that enables user
 - **User Preferences** - Save and restore user settings
 
 ### 🔐 **Security Features**
-- **Authentication System** - Secure login mechanism
-- **Session Tokens** - Token-based session management
-- **Activity Monitoring** - Log all remote access activities
-- **Connection Encryption** - Secure socket communication
+- **Password Authentication** - Server password protection for connections
+- **Username Verification** - Unique username requirement (no duplicates)
+- **Session Tracking** - All sessions logged with start/end times in MongoDB
+- **Activity Logging** - Comprehensive audit trail via ActivityLogDAO
+- **User Management** - Password hashing with UserDAO
+- **IP Address Logging** - Track client IP addresses for security auditing
+
+**Note**: Encryption (SSL/TLS) is not currently implemented but recommended for production use.
 
 ### 🎨 **User Interface**
 - **Dual-Mode Interface** - Separate client and server GUIs
@@ -163,12 +170,23 @@ This Remote Desktop System is a comprehensive Java application that enables user
    cd Remote_Desktop_System
    ```
 
-2. **Configure MongoDB Connection**
+2. **Start MongoDB**
    
-   Edit `src/common/database/MongoDBConnection.java` and update the connection string:
+   Ensure MongoDB is running on your system:
+   ```bash
+   # On Windows (if installed as service)
+   net start MongoDB
+   
+   # On macOS/Linux
+   mongod
+   ```
+   
+   **Optional**: Configure MongoDB Connection
+   
+   Edit `src/common/database/MongoDBConnection.java` if you need to change defaults:
    ```java
    private static final String CONNECTION_STRING = "mongodb://localhost:27017";
-   private static final String DATABASE_NAME = "remote_desktop_db";
+   private static final String DATABASE_NAME = "remoteDesktopDB";
    ```
 
 3. **Build the Project**
@@ -178,9 +196,10 @@ This Remote Desktop System is a comprehensive Java application that enables user
    
    This will:
    - Compile all Java sources
-   - Run tests (if any)
-   - Create a JAR file in the `target/` directory
-   - Generate `RemoteDesktop.exe` (Windows only)
+   - Create a fat JAR with all dependencies in `target/` directory
+   - Generate `RemoteDesktop.exe` (Windows only, requires Launch4j)
+   
+   **Note**: The application will continue to run even if MongoDB connection fails, but database features will be unavailable.
 
 4. **Run the Application**
    
@@ -263,15 +282,18 @@ This Remote Desktop System is a comprehensive Java application that enables user
 - **Timeout**: 30 seconds
 
 ### Screen Capture Settings
-- **Default Resolution**: Full screen
-- **Frame Rate**: 30 FPS (adjustable)
+- **Default Resolution**: Full screen (all monitors combined)
+- **Frame Rate**: 30 FPS default (adjustable 15-120 FPS range)
+- **Auto FPS Adjustment**: Enabled by default (can be disabled)
 - **Image Format**: JPEG
-- **Compression Quality**: 0.8 (adjustable)
+- **Compression Quality**: 0.7 default (adjustable via Constants.JPEG_QUALITY)
 
 ### Database Settings
-- **Connection String**: Configurable in `MongoDBConnection.java`
-- **Database Name**: `remote_desktop_db`
-- **Connection Pool**: Enabled by default
+- **Connection String**: `mongodb://localhost:27017` (configurable in `MongoDBConnection.java`)
+- **Database Name**: `remoteDesktopDB`
+- **Connection Pool**: Max 20, Min 5 connections
+- **Collections**: users, sessions, chatMessages, activityLogs, userPreferences
+- **Indexes**: Automatically created for optimal query performance
 
 ---
 
@@ -287,16 +309,19 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 ## 🚀 Future Enhancements
 
-- [ ] End-to-end encryption
-- [ ] Multi-client support
+- [ ] SSL/TLS encryption for secure communication
+- [ ] File transfer progress indicators
+- [ ] Typing indicators for chat
 - [ ] Audio streaming
 - [ ] Clipboard synchronization
 - [ ] Session recording and playback
 - [ ] Mobile client support
 - [ ] Web-based interface
 - [ ] Cloud deployment support
-- [ ] Advanced authentication (2FA)
-- [ ] Bandwidth optimization
+- [ ] Advanced authentication (2FA, OAuth)
+- [ ] Bandwidth optimization and adaptive quality
+- [ ] Screen region selection (partial screen capture)
+- [ ] Multiple simultaneous client control
 
 ---
 
