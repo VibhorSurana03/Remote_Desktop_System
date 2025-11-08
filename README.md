@@ -79,6 +79,44 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 *Complete system architecture showing client-server communication, database integration, and component interactions*
 
+### **Architecture Overview**
+
+The system follows a **three-tier architecture**:
+
+1. **Presentation Layer** (Client & Server Systems)
+   - Client System: ClientGUI, InputHandler, ScreenViewer, ChatPanel
+   - Server System: ServerGUI, ChatManager, InputHandler, ScreenCapturer, ClientHandler, ServerChatPanel
+
+2. **Business Logic Layer** (Common Components)
+   - Constants: Application-wide configuration
+   - Message: Communication protocol
+   - FileTransfer: File handling utilities
+
+3. **Data Layer** (MongoDB Database)
+   - Data Models: User, Session, ChatMessage, ActivityLog, UserPreferences
+   - Data Access Objects: UserDAO, SessionDAO, ChatMessageDAO, ActivityLogDAO, UserPreferencesDAO
+
+### **Communication Flow**
+
+**Client → Server:**
+- Authentication (username/password)
+- Mouse/Keyboard events (when control granted)
+- Chat messages
+- File transfers
+
+**Server → Client:**
+- Screen captures (JPEG compressed)
+- Control grant/revoke messages
+- Chat messages (broadcast)
+- File transfers
+
+**Both → MongoDB:**
+- User authentication and management
+- Session tracking (start/end times, IP addresses)
+- Chat message persistence
+- Activity logging (all actions)
+- User preferences storage
+
 ### **Client-Server Model**
 ```
 ┌─────────────┐         Network         ┌─────────────┐
