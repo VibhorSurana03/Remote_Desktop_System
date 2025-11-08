@@ -100,28 +100,6 @@ This Remote Desktop System is a comprehensive Java application that enables user
 - Activity logging (all actions)
 - User preferences storage
 
-### **Client-Server Model**
-```
-┌─────────────┐         Network         ┌─────────────┐
-│   Client    │ ◄─────────────────────► │   Server    │
-│   (Viewer)  │    Socket Connection    │  (Host)     │
-└─────────────┘                         └─────────────┘
-      │                                        │
-      │                                        │
-      ▼                                        ▼
-┌─────────────┐                         ┌─────────────┐
-│  Input      │                         │  Screen     │
-│  Handler    │                         │  Capturer   │
-└─────────────┘                         └─────────────┘
-      │                                        │
-      └────────────────┬───────────────────────┘
-                       ▼
-                ┌─────────────┐
-                │   MongoDB   │
-                │  Database   │
-                └─────────────┘
-```
-
 ### **Key Components Details**
 
 #### **Client Side**
