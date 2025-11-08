@@ -83,25 +83,6 @@ This Remote Desktop System is a comprehensive Java application that enables user
 
 ![High-Level Architecture](Architecture_Diagram.png)
 
-*Detailed component architecture showing Server System, Client System, Common Components, and MongoDB Database with all data models and DAOs*
-
-### **Architecture Overview**
-
-The system follows a **three-tier architecture**:
-
-1. **Presentation Layer** (Client & Server Systems)
-   - Client System: ClientGUI, InputHandler, ScreenViewer, ChatPanel
-   - Server System: ServerGUI, ChatManager, InputHandler, ScreenCapturer, ClientHandler, ServerChatPanel
-
-2. **Business Logic Layer** (Common Components)
-   - Constants: Application-wide configuration
-   - Message: Communication protocol
-   - FileTransfer: File handling utilities
-
-3. **Data Layer** (MongoDB Database)
-   - Data Models: User, Session, ChatMessage, ActivityLog, UserPreferences
-   - Data Access Objects: UserDAO, SessionDAO, ChatMessageDAO, ActivityLogDAO, UserPreferencesDAO
-
 ### **Communication Flow**
 
 **Client → Server:**
