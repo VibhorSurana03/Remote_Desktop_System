@@ -9,7 +9,7 @@
 
 **A powerful Java-based remote desktop application with real-time screen sharing, remote control, and integrated chat**
 
-[Features](#-features) • [Architecture](#-architecture) • [Installation](#-installation) • [Usage](#-usage)
+[Features](#-features) • [Architecture](#️-architecture) • [Installation](#-installation) • [Usage](#-usage)
 
 </div>
 
